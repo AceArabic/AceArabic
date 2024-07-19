@@ -1,3 +1,119 @@
-<h1> AceArabic Official </h1>
-<h2> Files will get uploaded soon 
-</h2>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title> AceArabic - Select your name</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>AceArabic Home</title>
+   <link href="/boiler/style.css" rel="stylesheet" type="text/css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/boiler/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/boiler/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/boiler/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/boiler/favicon/site.webmanifest">
+  
+  <style>
+    .button {
+      border: none;
+      border-radius: 8px;
+      color: #E8E8E8;
+      padding: 16px 30px;
+      text-align: center;
+      display: inline-block;
+      font-size: 16px;
+      margin: 6px 4px;
+      cursor: pointer;
+    }
+
+    .button1 {
+      background-color: #E8E8E8;
+      color: black;
+      border: 4px solid #00CC99;
+    }
+
+    .button1:hover {
+      background-color: #00CC99;
+      color: white;
+      transform: scale(0.95);
+      transition: transform 0.4s ease-in-out;
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+  <ul class="nav-list">
+    <li><a href="/dashboard.html" class="nav-link">Dashboard 🏠</a></li>
+    <li><a href="/lessons.html" class="nav-link">Lessons 📚</a></li>
+    <li><a href="/worksheets.html" class="nav-link">Worksheets 📃</a></li>
+    <li><a href="/about.html" class="nav-link">About ℹ️</a></li>
+  </ul>
+  <button class="toggle-button">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+</nav>
+
+<div id="form-container"></div>
+
+<h1 style="text-align:center; font-size:45px;" id="title">AceArabic Home</h1>
+<center>
+  <button class="button button1" id="awwab-shafi-mohammed">Awwab Shafi Mohammed</button>
+  <button class="button button1" id="gure-noor">Gure Noor</button>
+  <button class="button button1" id="maidah-noor">Maidah Noor</button>
+  <button class="button button1" id="erva-inan">Erva İnan</button>
+  <button class="button button1" id="maha-ashour">Maha Ashour</button>
+  <button class="button button1" id="faris-ashour">Faris Ashour</button>
+  <button class="button button1" id="hasnain-quadri-syed">Hasnain Quadri Syed</button>
+  <button class="button button1" id="aairah-quadri-syeda">Aairah Quadri Syeda</button>
+  <button class="button button1" id="qamar-abbas">Qamar Abbas</button>
+  <button class="button button1" id="jude-abbas">Jude Abbas</button>
+  <button class="button button1" id="laila-ashmawy">Laila Ashmawy</button>
+  <button class="button button1" id="marwa-elnour">Marwa Elnour</button>
+  <button class="button button1" id="bayan-khaleefa">Bayan Khaleefa</button>
+  <button class="button button1" id="judi">Judi</button>
+  <button class="button button1" id="layan-alhabra">Layan Alhabra</button>
+  <button class="button button1" id="jody-ahmed">Jody Ahmed</button>
+  <button class="button button1" id="maleka-ahmed">Maleka Ahmed</button>
+  <button class="button button1" id="adam-esam-hasan">Adam Esam Hasan</button>
+  <button class="button button1" id="safar-ali">Safar Ali</button>
+  <button class="button button1" id="nadiya-sharif">Nadiya Sharif</button>
+  <button class="button button1" id="yasin-sharif">Yasin Sharif</button>
+  <button class="button button1" id="eliyas-sharif">Eliyas Sharif</button>
+</center>
+
+<script src="/boiler/script.js"></script>
+<script>
+  // Get all buttons by class name
+  const buttons = document.querySelectorAll('.button');
+
+  // Add a click event listener to each button
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Retrieve the button's ID (which is the same as the class name)
+      const buttonId = button.id;
+      pushData(buttonId, "has logged in");
+      console.log(`Button "${buttonId}" was clicked!`);
+      localStorage.setItem("nameID", buttonId);
+      //window.location.href = '/AceArabic/index.html';
+      document.getElementById('title').innerHTML = "AceArabic - Loading..";
+      function checkVariable() {
+        if (shoulddo === 1) {
+        window.location.href = "/dashboard.html";
+           clearInterval(checkInterval);
+        }
+      }
+       let checkInterval = setInterval(checkVariable, 500);
+
+    });
+  });
+
+  document.querySelector('.toggle-button').addEventListener('click', function() {
+    document.querySelector('.nav-list').classList.toggle('active');
+  });
+</script>
+
+</body>
+</html>
