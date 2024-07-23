@@ -7,13 +7,13 @@
   <!-- We only include this to explicitly loosen the CSP of various packager environments. It does not provide any security. -->
   <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: blob:">
   <title>2MatchingGame</title>
-   <link rel="stylesheet" href="/boiler/packagestyle.css">
+  <link rel="stylesheet" href="/boiler/packagestyle.css">
   <meta name="theme-color" content="#000000">
   
 </head>
 <body>
   <div id="app"></div>
-  <div id="form-container"></div>
+<div id="form-container"></div>
   <div id="launch" class="screen" hidden title="Click to start">
     <div class="green-flag">
       <svg viewBox="0 0 16.63 17.5" width="42" height="44">
@@ -25,15 +25,12 @@
   </div>
 
   <div id="loading" class="screen">
-    <noscript>Enable JavaScript</noscript>
-    
-    
-  <div id="loading" class="screen">
     <img src="/assets/loading.gif" id="loading-gif" alt="Loading...">
     <div class="progress-bar-outer">
       <div class="progress-bar-inner" id="loading-inner"></div>
     </div>
   </div>
+
 
   <div id="error" class="screen" hidden>
     <h1>Error</h1>
@@ -42,8 +39,7 @@
       <p id="error-stack"></p>
     </details>
   </div>
-
-  <script src="/boiler/script.js"></script>
+<script src="/boiler/script.js"></script>
   <script src="mat2.js"></script>
   <script>
     const appElement = document.getElementById('app');
@@ -99,6 +95,7 @@
       } catch (error) {
         console.error(error);
       }
+
       if (document.fullscreenEnabled || document.webkitFullscreenEnabled) {
         let isFullScreen = !!(document.fullscreenElement || document.webkitFullscreenElement);
         const fullscreenButton = document.createElement('img');
@@ -144,6 +141,7 @@
           document.body.appendChild(fullscreenButton);
         }
       }
+
       vm.setTurboMode(false);
       if (vm.setInterpolation) vm.setInterpolation(false);
       if (vm.setFramerate) vm.setFramerate(30);
