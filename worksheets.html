@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AceArabic - My Dashboard</title>
+<link rel="stylesheet" href="/boiler/style.css">
+<style>
+  body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar {
+    background-color: #ffcc00;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-left {
+    display: flex;
+  }
+
+  .nav-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  .nav-link {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    transition: background-color 0.3s ease, border-radius 0.3s ease;
+  }
+
+  .nav-link:hover {
+    background-color: #ffe066;
+    border-radius: 8px;
+  }
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    top: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #555 transparent;
+  }
+
+  @media (max-width: 550px) {
+    .nav-list {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .nav-link {
+      padding: 10px 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    .tooltip {
+      margin: 10px 0;
+    }
+
+    .navbar {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+</style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-left">
+      <ul class="nav-list">
+        <li><a href="/dashboard.html" class="nav-link">Dashboard 🔍</a></li>
+        <li><a href="/lessons.html" class="nav-link">Lessons 📚</a></li>
+        <li><a href="/worksheets.html" class="nav-link">Worksheets 📃</a></li>
+        <li><a href="/about.html" class="nav-link">About ℹ️</a></li>
+      </ul>
+    </div>
+    <div class="tooltip" style="margin-right:50px">
+      <li class="nav-link"> 🏆</li>
+      <span class="tooltiptext"><img src="assets/patch1.png" style="width:100px;"> <br>You are on Level 1 - Just Sprouted. Keep learning to go to the next level!</span>
+    </div>
+  </nav>
+  <br><br>
+<center>
+  Coming Soon
+</center>
+</body>
+</html>
