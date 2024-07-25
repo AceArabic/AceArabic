@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title> AceArabic - Select your name</title>
+  <title>AceArabic - Select your name</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>AceArabic Home</title>
@@ -11,10 +11,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/boiler/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/boiler/favicon/favicon-16x16.png">
   <link rel="manifest" href="/boiler/favicon/site.webmanifest">
-  
+
   <style>
     #toolbar {
-        display: none;
+      display: none;
     }
 
     .button {
@@ -122,23 +122,9 @@
         flex-direction: column;
         align-items: center;
       }
-video {
-  padding-top:5%
-}
-      .nav-link {
-        padding: 10px 0;
-        width: 100%;
-        text-align: center;
-      }
 
-      .tooltip {
-        margin: 10px 0;
-        margin-right: 0px;
-      }
-
-      .navbar {
-        flex-direction: column;
-        align-items: center;
+      video {
+        padding-top: 5%;
       }
     }
 
@@ -152,12 +138,38 @@ video {
     .button {
       display: none;
     }
-    
+
+    #play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 100px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      color: white;
+    }
+
+    #video-container {
+      position: relative;
+      width: 45%;
+      margin: auto;
+    }
+
+    #intro-video {
+      width: 100%;
+      height: auto;
+    }
   </style>
 </head>
 
 <body>
-
   <nav class="navbar" id="toolbar">
     <div class="nav-left">
       <ul class="nav-list">
@@ -173,15 +185,18 @@ video {
     </div>
   </nav>
 
-  <center><div id="video-container">
-    <video id="intro-video" style="padding-top:1%;width:45%;height:45%;"autoplay muted>
-      <source src="/assets/Presentation1.mp4" type="video/mp4">
-      Sorry, you're not able to view our intro animation due to your browser not supporting the HTML video tag. Update your browser! How do you survive on such an old version?
-    </video>
-  </div></center>
+  <center>
+    <div id="video-container">
+      <video id="intro-video" style="padding-top:10%;" >
+        <source src="/Presentation1real (online-video-cutter.com).mp4" type="video/mp4">
+        Sorry, you're not able to view our intro animation due to your browser not supporting the HTML video tag. Update your browser! How do you survive on such an old version?
+      </video>
+      <div id="play-button">🚩</div>
+    </div>
+  </center>
   <div id="form-container"></div>
 
-  <h1 style="text-align:center; font-size:45px;" id="title">AceArabic Home</h1>
+  <h1 style="text-align:center; font-size:45px;" id="title">AceArabic Home - Select your name!</h1>
   <center>
     <button class="button button1" id="awwab-shafi-mohammed">Awwab Shafi Mohammed</button>
     <button class="button button1" id="gure-noor">Gure Noor</button>
@@ -209,29 +224,31 @@ video {
   <audio id="clickSound" src="button-4-214382.mp3" preload="auto"></audio>
   <script src="/boiler/script.js"></script>
   <script>
-  
-      document.querySelectorAll('button').forEach(button => {
-        button.addEventListener('click', () => {
-          const clickSound = document.getElementById("clickSound");
-          clickSound.play();
-        });
+    document.querySelectorAll('button').forEach(button => {
+      button.addEventListener('click', () => {
+        const clickSound = document.getElementById("clickSound");
+        clickSound.play();
       });
- 
+    });
 
     document.addEventListener('DOMContentLoaded', function() {
-        // Initially hide the toolbar
-        document.getElementById('toolbar').style.display = 'none';
+      // Initially hide the toolbar
+      document.getElementById('toolbar').style.display = 'none';
 
-        // Add a click event listener to each button
-
-
-        document.querySelector('.toggle-button').addEventListener('click', function() {
-          document.querySelector('.nav-list').classList.toggle('active');
-        });
+      document.querySelector('.toggle-button').addEventListener('click', function() {
+        document.querySelector('.nav-list').classList.toggle('active');
+      });
     });
 
     // Get the video element
     const video = document.getElementById('intro-video');
+    const playButton = document.getElementById('play-button');
+
+    // Add an event listener to the play button to play the video when clicked
+    playButton.addEventListener('click', () => {
+      video.play();
+      playButton.style.display = 'none';
+    });
 
     // Add an event listener to detect when the video has ended
     video.addEventListener('ended', () => {

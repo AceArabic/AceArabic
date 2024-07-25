@@ -1,359 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AceArabic - My Dashboard</title>
-<link rel="stylesheet" href="/boiler/style.css">
-<style>
-  body {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/boiler/style.css">
+    <style>
+      .nav-left {
+        display: flex;
+      }
 
-  .nav-left {
-    display: flex;
-  }
+      .nav-list {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
 
-  .nav-list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-  }
+      .nav-link {
+        text-decoration: none;
+        color: #333;
+        padding: 10px 15px;
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        transition: background-color 0.3s ease, border-radius 0.3s ease;
+      }
 
-  .nav-link {
-    text-decoration: none;
-    color: #333;
-    padding: 10px 15px;
-    display: flex;
-    align-items: center;
-    font-size: 18px;
-    transition: background-color 0.3s ease, border-radius 0.3s ease;
-  }
+      .nav-link:hover {
+        background-color: #ffe066;
+        border-radius: 8px;
+      }
 
-  .nav-link:hover {
-    background-color: #ffe066;
-    border-radius: 8px;
-  }
+      .tooltip {
+        position: relative;
+        display: inline-block;
+        margin-right: 30px;
+      }
 
-  .tooltip {
-    position: relative;
-    display: inline-block;
-    margin-right:30px
-  }
+      .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+        position: absolute;
+        z-index: 1;
+        top: 125%;
+        left: 50%;
+        margin-left: -60px;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
 
-  .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    position: absolute;
-    z-index: 1;
-    top: 125%;
-    left: 50%;
-    margin-left: -60px;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
+      .tooltip .tooltiptext::after {
+        content: "";
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent transparent #555 transparent;
+      }
 
-  .tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent #555 transparent;
-  }
+      @media (max-width: 550px) {
+        .nav-list {
+          flex-direction: column;
+          align-items: center;
+        }
 
-  @media (max-width: 550px) {
-    .nav-list {
-      flex-direction: column;
-      align-items: center;
-    }
+        .nav-link {
+          padding: 10px 0;
+          width: 100%;
+          text-align: center;
+        }
 
-    .nav-link {
-      padding: 10px 0;
-      width: 100%;
-      text-align: center;
-    }
+        .tooltip {
+          margin-right: 0px;
+        }
 
-    .tooltip {
-      margin: 10px 0;
-      margin-right:0px;
+        .navbar {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
 
-    }
+      .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+      }
 
-    .navbar {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
+      .about-container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #f4f4f4;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
 
-  .tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-  }
+      .about-header {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: center;
+      }
 
-  .content {
-    padding: 20px;
-    text-align: center;
-    color: #666;
-  }
+      .about-content {
+        font-size: 18px;
+        color: #555;
+        line-height: 1.6;
+      }
 
-  .dashboard {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    flex-wrap: wrap;
-  }
+      .updates-section {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
 
-  .table-container {
-    margin: 30px;
-    width: calc(30% - 40px);
-    background-color: #ffffff;
-    border: 2px solid #ffcc00;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-  }
+      .updates-header {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: center;
+      }
 
-  .section-title {
-    font-size: 28px;
-    color: #ffcc00;
-    margin-top: 30px;
-    text-align: center;
-  }
+      .updates-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
 
-  .table {
-    width: 100%;
-    border-collapse: collapse;
-  }
+      .update-post {
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
 
-  .table th,
-  .table td {
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #ffcc00;
-    background-color: #fff9e6;
-    color: #333;
-  }
+      .update-title {
+        font-size: 20px;
+        color: #333;
+        margin-bottom: 10px;
+      }
 
-  .table th {
-    background-color: #ffcc00;
-  }
+      .update-content {
+        font-size: 16px;
+        color: #555;
+        line-height: 1.5;
+      }
 
-  .emoji {
-    font-size: 1.5em;
-  }
+      .google-form-section {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
 
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    .table-container {
-      width: 100%;
-      margin: 10px 0;
-    }
-    .section-title {
-      font-size: 22px;
-    }
-    .table th,
-    .table td {
-      font-size: 14px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .section-title {
-      font-size: 18px;
-    }
-    .table th,
-    .table td {
-      font-size: 12px;
-    }
-  }
-</style>
-</head>
-<body>
-
-<nav class="navbar">
-  <div class="nav-left">
-    <ul class="nav-list">
-      <li><a href="/dashboard.html" class="nav-link">Dashboard 🔍</a></li>
-      <li><a href="/lessons.html" class="nav-link">Lessons 📚</a></li>
-      <li><a href="/worksheets.html" class="nav-link">Worksheets 📃</a></li>
-      <li><a href="/about.html" class="nav-link">About ℹ️</a></li>
-    </ul>
-  </div>
-  <div class="tooltip">
-    <li class="nav-link"> 🏆</li>
-    <span class="tooltiptext"><img src="assets/patch1.png" style="width:100px;"> <br>You are on Level 1 - Just Sprouted. Keep learning to go to the next level!</span>
-  </div>
-</nav>
-
-<div class="content">
-  <div class="section-title" id="welcome" style="color:#000000;"><b>Welcome, Guest</b></div>
-  
-  <div class="dashboard">
-    <div class="table-container">
-      <div class="section-title">Teacher Recommendations 🧕🏼</div>
-      <table class="table" id="teacherrec">
-        <tbody></tbody>
-      </table>
+      .google-form-section iframe {
+        width: 100%;
+        height: 600px;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-left">
+        <ul class="nav-list">
+          <li><a href="/dashboard.html" class="nav-link">Dashboard 🔍</a></li>
+          <li><a href="/lessons.html" class="nav-link">Lessons 📚</a></li>
+          <li><a href="/worksheets.html" class="nav-link">Worksheets 📃</a></li>
+          <li><a href="/about.html" class="nav-link">About ℹ️</a></li>
+        </ul>
+      </div>
+      <div class="tooltip">
+        <li class="nav-link"> 🏆</li>
+        <span class="tooltiptext"><img src="assets/patch1.png" style="width:100px;"> <br>You are on Level 1 - Just Sprouted. Keep learning to go to the next level!</span>
+      </div>
+    </nav>
+    <div class="about-container">
+      <div class="about-header">About Us</div>
+      <div class="about-content">
+        <p><b><center>We are excited to announce the beta version of AceArabic, an educational website that aims to teach children how to read Quranic Arabic. We are still in development. If you see any bugs or have any suggestions, please do not hesitate to report them. We thrive on suggestions and without them we wouldn't be anywhere.</center></b></p>
+        <p><b>Made by Abrar Mohammed and Amina Shafi. Beta Tester: Awwab Mohammed.</b></p>
+      </div>
     </div>
-
-    <div class="table-container">
-      <div class="section-title">Level - <b>Just Sprouted</b></div>
-      <br>
-      <img src="/assets/pic1.png" style="width:90%">
+    <div class="updates-section">
+      <div class="updates-header"><b>Coming up soon, in sha Allah!</b></div>
+      <div class="updates-container">
+        
+        <div class="update-post">
+          <div class="update-title"></div>
+          <div class="update-content">
+        
+            - Uploading "Connecting Letters" video and quiz
+            <br>
+            - Work on new Cake Decoration game
+            <br>
+            - Optimize Alphabets lessons by decreasing load times<br>
+            - Adding starting points for letters tracing, so that students remember to start at the right<br>
+        
+          </div>
+        </div>
+        
+        </div>
+      </div>
     </div>
-
-    <div class="table-container">
-      <div class="section-title">Stats 📊</div>
-      <table class="table" id="stats">
-        <tbody></tbody>
-      </table>
+    <div class="google-form-section">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScI6LRzght9Kst1JDRFOhG0PvPIjf_rlRWcZecRi46MRdb2Ww/viewform?embedded=true" width="640" height="892" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </div>
-  </div>
-</div>
-
-<script>
-  // Retrieve name from localStorage
-  let name = localStorage.getItem("nameID");
- 
-  function hyphenToCapitalizedName(inputString) {
-    return inputString
-      .split('-')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
-  }
-  let readablename = hyphenToCapitalizedName(name);
-  // Display welcome message
-  document.getElementById("welcome").innerHTML = `Welcome, ${hyphenToCapitalizedName(readablename)}`+"!";
-  let level = "";
-  
-
-  // Student recommendations data
-  const students = {
-      awwabShafiMohammed: [
-          { text: "Complete Rocket Game", link: "/letters.html?modal=review" },
-          { text: "Check out letters page!", link: "/letters.html" }
-      ],
-      gureNoor: [
-          { text: "Complete Rocket Game", link: "/letters.html?modal=review" },
-          { text: "Check out letters page!", link: "/letters.html" }
-      ],
-      maidahNoor: [
-          { text: "Complete Rocket Game", link: "/letters.html?modal=review" },
-          { text: "Check out letters page!", link: "/letters.html" }
-      ],
-      ervaInan: [
-          { text: "Complete Rocket Game", link: "/letters.html?modal=review" },
-          { text: "Check out letters page!", link: "/letters.html" }
-      ],
-      mahaAshour: [
-          { text: "Complete Rocket Game", link: "/letters.html?modal=review" },
-          { text: "Check out letters page!", link: "/letters.html" }
-      ],
-      farisAshour: [
-          { text: "Complete Rocket Game", link: "/letters.html?modal=review" },
-          { text: "Check out letters page!", link: "/letters.html" }
-      ],
-      hasnainQuadriSyed: [
-          { text: "Complete Rocket Game", link: "/letters.html?modal=review" },
-          { text: "Check out letters page!", link: "/letters.html" }
-      ],
-      aairahQuadriSyeda: [
-          { text: "Complete Rocket Game", link: "/letters.html?modal=review" },
-          { text: "Check out letters page!", link: "/letters.html" }
-      ],
-      qamarAbbas: [
-          { text: "Complete Rocket Game", link: "/letters.html?modal=review" },
-          { text: "Check out letters page!", link: "/letters.html" }
-      ],
-      judeAbbas: [
-          { text: "Complete Rocket Game", link: "/letters.html?modal=review" },
-          { text: "Check out letters page!", link: "/letters.html" }
-      ],
-      lailaAshmawy: [
-          { text: "Complete Rocket Game", link: "/letters.html?modal=review" },
-          { text: "Check out letters page!", link: "/letters.html" }
-      ],
-      marwaElnour: [
-          { text: "Complete Rocket Game", link: "/letters.html?modal=review" },
-          { text: "Check out letters page!", link: "/letters.html" }
-      ],
-      bayanKhaleefa: [
-          { text: "Complete Rocket Game", link: "/letters.html?modal=review" },
-          { text: "Check out letters page!", link: "/letters.html" }
-      ],
-      judi: [
-          { text: "Complete Rocket Game", link: "/letters.html?modal=review" },
-          { text: "Check out letters page!", link: "/letters.html" }
-      ],
-      layanAlhabra: [
-          { text: "Complete Rocket Game", link: "/letters.html?modal=review" },
-          { text: "Check out letters page!", link: "/letters.html" }
-      ],
-      jodyAhmed: [
-          { text: "Complete Rocket Game", link: "/letters.html?modal=review" },
-          { text: "Check out letters page!", link: "/letters.html" }
-      ],
-      malekaAhmed: [
-          { text: "Complete Rocket Game", link: "/letters.html?modal=review" },
-          { text: "Check out letters page!", link: "/letters.html" }
-      ],
-      adamEsamHasan: [
-          { text: "Complete Rocket Game", link: "/letters.html?modal=review" },
-          { text: "Check out letters page!", link: "/letters.html" }
-      ],
-      safarAli: [
-          { text: "Complete Rocket Game", link: "/letters.html?modal=review" },
-          { text: "Check out letters page!", link: "/letters.html" }
-      ],
-      nadiyaSharif: [
-          { text: "Complete Rocket Game", link: "/letters.html?modal=review" },
-          { text: "Check out letters page!", link: "/letters.html" }
-      ],
-      yasinSharif: [
-          { text: "Complete Rocket Game", link: "/letters.html?modal=review" },
-          { text: "Check out letters page!", link: "/letters.html" }
-      ],
-      eliyasSharif: [
-          { text: "Complete Rocket Game", link: "/letters.html?modal=review" },
-          { text: "Check out letters page!", link: "/letters.html" }
-      ]
-  };
-
-  // Function to append row to table
-  function appendToTable(tableId, content) {
-    const table = document.getElementById(tableId).querySelector('tbody');
-    const newRow = table.insertRow();
-    const newCell = newRow.insertCell();
-    newCell.innerHTML = content;
-  }
-
-  function hyphenToCamelCase(inputString) {
-    return inputString.replace(/-([a-z])/g, (_, match) => match.toUpperCase());
-  }
-
-  // Retrieve recommendations for the student if available
-  const recommended = students[hyphenToCamelCase(name)];
-
-  if (recommended) {
-    recommended.forEach(item => {
-      appendToTable('teacherrec', `<a href="${item.link}">${item.text}</a>`);
-    });
-  } else {
-    console.log(`No recommendations found for ${name}`);
-  }
-</script>
-
-</body>
+  </body>
 </html>

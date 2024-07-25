@@ -4,99 +4,176 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
     <link rel="stylesheet" href="/boiler/style.css">
-  </head>
-  <style>
-    .nav-left {
-      display: flex;
-    }
+    <style>
+      .nav-left {
+        display: flex;
+      }
 
-    .nav-list {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-    }
-
-    .nav-link {
-      text-decoration: none;
-      color: #333;
-      padding: 10px 15px;
-      display: flex;
-      align-items: center;
-      font-size: 18px;
-      transition: background-color 0.3s ease, border-radius 0.3s ease;
-    }
-
-    .nav-link:hover {
-      background-color: #ffe066;
-      border-radius: 8px;
-    }
-
-    .tooltip {
-      position: relative;
-      display: inline-block;
-      margin-right:30px;
-    }
-
-    .tooltip .tooltiptext {
-      visibility: hidden;
-      width: 120px;
-      background-color: #555;
-      color: #fff;
-      text-align: center;
-      padding: 5px 0;
-      border-radius: 6px;
-      position: absolute;
-      z-index: 1;
-      top: 125%;
-      left: 50%;
-      margin-left: -60px;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .tooltip .tooltiptext::after {
-      content: "";
-      position: absolute;
-      bottom: 100%;
-      left: 50%;
-      margin-left: -5px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: transparent transparent #555 transparent;
-    }
-
-    @media (max-width: 550px) {
       .nav-list {
-        flex-direction: column;
-        align-items: center;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
       }
 
       .nav-link {
-        padding: 10px 0;
-        width: 100%;
-        text-align: center;
+        text-decoration: none;
+        color: #333;
+        padding: 10px 15px;
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        transition: background-color 0.3s ease, border-radius 0.3s ease;
+      }
+
+      .nav-link:hover {
+        background-color: #ffe066;
+        border-radius: 8px;
       }
 
       .tooltip {
-        margin-right:0px;
-
+        position: relative;
+        display: inline-block;
+        margin-right: 30px;
       }
 
-      .navbar {
+      .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+        position: absolute;
+        z-index: 1;
+        top: 125%;
+        left: 50%;
+        margin-left: -60px;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .tooltip .tooltiptext::after {
+        content: "";
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent transparent #555 transparent;
+      }
+
+      @media (max-width: 550px) {
+        .nav-list {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .nav-link {
+          padding: 10px 0;
+          width: 100%;
+          text-align: center;
+        }
+
+        .tooltip {
+          margin-right: 0px;
+        }
+
+        .navbar {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+
+      .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .about-container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #f4f4f4;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-header {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .about-content {
+        font-size: 18px;
+        color: #555;
+        line-height: 1.6;
+      }
+
+      .updates-section {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .updates-header {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .updates-container {
+        display: flex;
         flex-direction: column;
-        align-items: center;
+        gap: 20px;
       }
-    }
 
-    .tooltip:hover .tooltiptext {
-      visibility: visible;
-      opacity: 1;
-      
-    }
-  </style>
+      .update-post {
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .update-title {
+        font-size: 20px;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .update-content {
+        font-size: 16px;
+        color: #555;
+        line-height: 1.5;
+      }
+
+      .google-form-section {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .google-form-section iframe {
+        width: 100%;
+        height: 600px;
+        border: none;
+      }
+    </style>
+  </head>
   <body>
     <nav class="navbar">
       <div class="nav-left">
@@ -112,9 +189,36 @@
         <span class="tooltiptext"><img src="assets/patch1.png" style="width:100px;"> <br>You are on Level 1 - Just Sprouted. Keep learning to go to the next level!</span>
       </div>
     </nav>
+    <div class="about-container">
+      <div class="about-header">About Us</div>
+      <div class="about-content">
+        <p><b><center>We are excited to announce the beta version of AceArabic, an educational website that aims to teach children how to read Quranic Arabic. We are still in development. If you see any bugs or have any suggestions, please do not hesitate to report them. We thrive on suggestions and without them we wouldn't be anywhere.</center></b></p>
+        <p><b>Made by Abrar Mohammed and Amina Shafi. Beta Tester, Letters Audio, & Game Ideas: Awwab Mohammed.</b></p>
+      </div>
+    </div>
+    <div class="updates-section">
+      <div class="updates-header"><b>Coming up soon, in sha Allah!</b></div>
+      <div class="updates-container">
+        
+        <div class="update-post">
+          <div class="update-title"></div>
+          <div class="update-content">
+        
+            - Uploading "Connecting Letters" video and quiz
+            <br>
+            - Work on new Cake Decoration game
+            <br>
+            - Optimize Alphabets lessons by decreasing load times<br>
+            - Adding starting points for letters tracing, so that students remember to start at the right<br>
+        
+          </div>
+        </div>
+        
+        </div>
+      </div>
+    </div>
+    <div class="google-form-section">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScI6LRzght9Kst1JDRFOhG0PvPIjf_rlRWcZecRi46MRdb2Ww/viewform?embedded=true" width="640" height="892" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    </div>
   </body>
-  <center>
-    <div style="width:50%">
-    <p> <b>We are excited to announce the beta version of AceArabic, an educational website that aims to teach children how to read Quranic Arabic. <br><br> We are still in development. If you see, any bugs or have any suggestions, please do not hesitate to report them. We thrive on suggestions and without them we wouldn't be anywhere. <br><br> Made by Abrar Mohammed and Amina Shafi. Beta Tester: Awwab Mohammed.</b></p></div>
-  </center>
 </html>
